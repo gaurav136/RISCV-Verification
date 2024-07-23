@@ -19,13 +19,14 @@ module datapath (input clk,
                  output ALUR31,
                  output [31:0] PC,
                  output [31:0] Mem_WrAddr,
-                 output [31:0] Mem_WrData);
+                 output [31:0] Mem_WrData,
+                 output [31:0] Result);
     
     
     
     wire [31:0] PCNext, PCPlus4, PCTarget, PCNextJalr;
     wire [31:0] AuLuiPC, Auipc;
-    wire [31:0] ImmExt, SrcA, SrcB, Result, WriteData, ALUResult;
+    wire [31:0] ImmExt, SrcA, SrcB, WriteData, ALUResult; // Result
     wire [31:0] Load_Extend_Data,Store_Extend_Data;
     wire [1:0]  Add_offset;
     

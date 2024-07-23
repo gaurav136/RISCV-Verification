@@ -15,17 +15,20 @@ module top_riscv_cpu (
     input Ext_MemWrite,
     input [31:0] Ext_WriteData, Ext_DataAdr,
     output MemWrite,
-    output [31:0] WriteData, DataAdr, ReadData
+    output [31:0] WriteData, DataAdr, ReadData,
+    output [31:0] PC,
+    output [31:0] Result
 );
 
 // wire lines from other modules
-wire [31:0] PC, Instr;
+wire [31:0] Instr;  //PC
 wire MemWrite_rv32;
 wire [31:0] DataAdr_rv32, WriteData_rv32;
 wire [1:0] Store;
+//wire [31:0] Result;
 
 // instantiate processor and memories
-riscv_cpu rvsingle (clk, reset, PC, Instr, MemWrite_rv32, DataAdr_rv32, WriteData_rv32, Store, ReadData);
+riscv_cpu rvsingle (clk, reset, PC, Instr, MemWrite_rv32, DataAdr_rv32, WriteData_rv32, Store, ReadData,Result);
 instr_mem imem (PC, Instr);
 data_mem dmem (clk, MemWrite, DataAdr, WriteData, Store, ReadData);
 

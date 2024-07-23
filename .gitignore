@@ -1,0 +1,15 @@
+# list of output_files not to be ignore:
+!*.sof
+!*.pof
+
+# Ignore files
+*.bak
+*.qws
+
+# Ignored folders
+db/
+incremental_db/
+simulation/
+output_files/
+
+

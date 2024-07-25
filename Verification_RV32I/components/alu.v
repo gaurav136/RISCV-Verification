@@ -14,7 +14,7 @@ always @(a, b, alu_ctrl) begin
         4'b1000:  alu_out <= a + ~b + 1;  // SUB
 		  4'b0001:  alu_out <= a << {27'b0,b[4:0]}; //SLL
         4'b0010:  begin                   // SLT
-                     if (a[31] != b[31]) alu_out <= a[31] ? 0 : 1;
+                     if (a[31] != b[31]) alu_out <= a[31] ? 1 : 0; 
                      else alu_out <= a < b ? 1 : 0;
 						end
 		  4'b0011: alu_out <= a < b ? 1 : 0; //SLTU

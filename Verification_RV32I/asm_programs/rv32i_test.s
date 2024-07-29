@@ -47,55 +47,59 @@ main:       addi    x1, x0, 1               # x1 = 1                        0   
             lhu     x30, 39(x3)             # x30 =[39 - 3]= 0x0000FFFD     80  
 
             # Branch instuctions
-            addi x6 , x0 , -5               #                               84
-            addi x7 , x0 , 5                #                               88
-target_1:   addi x6 , x6 ,1                 # blt t0, t1, target            8C           
-            blt x6, x7, target_1            # if t0 < t1 then target        90                                 
-            add x6, x0, x6                  # x6 = 5                        94
+            addi x4, x0, 0                  #                               84
+            addi x6 , x0 , -5               #                               88
+            addi x7 , x0 , 5                #                               8C
+target_1:   addi x4, x4, 1                  # x4 = A                        90
+            addi x6 , x6 ,1                 # blt t0, t1, target            94           
+            blt x6, x7, target_1            # if t0 < t1 then target        98                                 
+            add x6, x0, x6                  # x6 = 5                        9C
 
-            addi x8 , x0 , -5               #                               98
-            addi x9 , x0 , 5                #                               9C           
-target_2:   addi x9, x9, -1                 # bge t0, t1, target            A0 
-            bge x9, x8, target_2            # if t0 >= t1 then target       A4
-            add x9, x0, x9                  # x9 = -6                       A8
+            addi x4, x0, 0                  #                               A0
+            addi x8 , x0 , -5               #                               A4
+            addi x9 , x0 , 5                #                               A8         
+target_2:   addi x4, x4, 1                  # x4 = B                        AC
+            addi x9, x9, -1                 # bge t0, t1, target            B0 
+            bge x9, x8, target_2            # if t0 >= t1 then target       B4
+            add x9, x0, x9                  # x9 = -6                       B8
 
-            addi x10, x0, 1                 #***                            AC
-            addi x11, x0, 5                 #                               B0
-target_3:   addi x10, x10, 1                #                               B4
-            bltu x10, x11, target_3         #                               B8
-            add  x10, x0, x10               # x10 = 5                       BC             
+            addi x4, x0, 0                  #                               BC                
+            addi x10, x0, 1                 #***                            C0
+            addi x11, x0, 5                 #                               C4
+target_3:   addi x4, x4, 1                  # x4 = 4                        C8
+            addi x10, x10, 1                #                               CC
+            bltu x10, x11, target_3         #                               D0
+            add  x10, x0, x10               # x10 = 5                       D4           
 
-            addi x12, x0, 1                 #                               C0
-            addi x13, x0, 5                 #                               C4
-target_4:   addi x13, x13, -1               #                               C8
-            bgeu x13, x12, target_4         #                               CC
-            add  x13, x0, x13               # x13 = 0                       D0
+            addi x4, x0, 0                  #                               D8
+            addi x12, x0, 1                 #                               DC
+            addi x13, x0, 5                 #                               E0
+target_4:   addi x4, x4, 1                  # x4 = 5                        E4
+            addi x13, x13, -1               #                               E8
+            bgeu x13, x12, target_4         #                               EC
+            add  x13, x0, x13               # x13 = 0                       F0
 
-            beq x2, x3, target_x            # beq t0, t1, target            D4
-            beq x2, x2, target_5            # if t0 == t1 then target       D8
-            addi x4, x0, -1                 #                               DC
+            addi x4, x0, 0                  #                               F4
+            addi x14, x0, 5                 #                               F8
+            addi x15, x0, 0                 #                               FC               
+target_5:   addi x4, x4, 1                  # x4 = 5                        100
+            addi x15, x15, 1                # bne t0, t1, target            104
+            bne x15, x14, target_5          # if t0 != t1 then target       108
+            add x15 , x0 , x15              # x15 = 5                       10C
 
-
-target_5:   addi x14, x0, 5                 #                               E0 
-            addi x15, x0, 0                 #                               E4                
-target_6:   addi x15, x15, 1                # bne t0, t1, target            E8 
-            bne x15, x14, target_6          # if t0 != t1 then target       EC
-            add x15 , x0 , x15              # x15 = 5                       F0    
+            addi x4, x0, 0                  #                               110
+            addi x16, x0, 2                 #                               114                             
+            addi x17, x0, 3                 #                               118
+target_6:   addi x4, x4, 1                  # x4 = 2                        11C
+            addi x16, x16, 1                # x16 = 3                       120
+            beq x16, x17, target_6          # beq t0, t1, target            124
+            add x16, x0, x16                # x16 = 4                       128
+    
 
             # J type instruction
-            jalr     x31, 256(x0)           #                               F4
-            addi x4 , x0 , -1               #                               F8
+            jalr    x31, 308(x0)            # x31 = 130                     12C
+            addi    x4 , x0 , -1            # shouldn't be exicute          130
+            add     x31 , x0 ,  x31         # x31 = 130                     134
 
             # I type jump instruction       
-target_x:   jal    x4,  target_x            #                               FC
-target_7:   jal    x4,  target_7            #                               100 
-
-
-
-
-
-
-
-
-
-
+target_7:   jal    x4,  target_7            # x4 = 13C                      138 

@@ -504,7 +504,7 @@ always @(negedge clk) begin
         begin
             if(Result <= 32'hA)
             begin
-                $display("blt is exicuting");
+                $display("blt is executing");
             end
             else
             begin
@@ -529,7 +529,7 @@ always @(negedge clk) begin
         begin
             if(Result <= 32'hB)
             begin
-                $display("beg is exicuting");
+                $display("beg is executing");
             end
             else
             begin
@@ -554,7 +554,7 @@ always @(negedge clk) begin
         begin
             if(Result <= 4)
             begin
-                $display("bltu is exicuting");
+                $display("bltu is executing");
             end
             else
             begin
@@ -579,7 +579,7 @@ always @(negedge clk) begin
         begin
             if(Result <= 5)
             begin
-                $display("begu is exicuting");
+                $display("begu is executing");
             end
             else
             begin
@@ -604,7 +604,7 @@ always @(negedge clk) begin
         begin
             if(Result <= 5)
             begin
-                $display("bne is exicuting");
+                $display("bne is executing");
             end
             else
             begin
@@ -629,7 +629,7 @@ always @(negedge clk) begin
         begin
             if(Result <=2)
             begin
-                $display("beq is exicuting");
+                $display("beq is executing");
             end
             else
             begin
@@ -654,11 +654,11 @@ always @(negedge clk) begin
         begin
             if(Result === 32'h130 )
             begin
-                $display("Jal is correct ");
+                $display("jalr is correct ");
             end
             else
             begin
-                $display("Verify Jal");
+                $display("Verify jalr");
             end
         end
         
@@ -666,13 +666,13 @@ always @(negedge clk) begin
         begin
             if(Result === 32'h13C )
             begin
-                $display("Jal is correct ");
+                $display("jal is correct ");
                 $display("Simulation succeeded");
                 $stop;
             end
             else
             begin
-                $display("Verify Jal");
+                $display("Verify jal");
                 $stop;
             end
         end

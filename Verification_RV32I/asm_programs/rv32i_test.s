@@ -97,7 +97,7 @@ target_6:   addi x4, x4, 1                  # x4 = 2                        11C
     
 
             # J type instruction
-            jalr    x31, 308(x0)            # x31 = 130                     12C
+            jalr    x31, x0, 308            # x31 = 130                     12C
             addi    x4 , x0 , -1            # shouldn't be exicute          130
             add     x31 , x0 ,  x31         # x31 = 130                     134
 
